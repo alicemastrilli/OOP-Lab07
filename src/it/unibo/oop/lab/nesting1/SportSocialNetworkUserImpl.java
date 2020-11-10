@@ -141,9 +141,11 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * with its bare name.
      */
     public static final class Sport {
+    	
     	private final String sport_name;
+    	
     	public Sport(final String nome) {
-    		this.sport_name=nome;
+    		this.sport_name = nome;
     	}
     	
         /*
