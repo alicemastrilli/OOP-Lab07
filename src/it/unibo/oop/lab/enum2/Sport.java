@@ -17,67 +17,61 @@ package it.unibo.oop.lab.enum2;
  */
 public enum Sport {
 
-    /*
-     * TODO
-     * 
-     * Declare the following sports:
-     * 
-     * - basket
-     * 
-     * - volley
-     * 
-     * - tennis
-     * 
-     * - bike
-     * 
-     * - F1
-     * 
-     * - motogp
-     * 
-     * - soccer
-     * 
-     */
-
-    /*
-     * TODO
-     * 
-     * [FIELDS]
-     * 
-     * Declare required fields
-     */
-
-    /*
-     * TODO
-     * 
-     * [CONSTRUCTOR]
-     * 
-     * Define a constructor like this:
-     * 
-     * - Sport(final Place place, final int noTeamMembers, final String actualName)
-     */
-
+	BASKET( Place.INDOOR,5, "basket" ),
+	VOLLEY( Place.INDOOR, 6, "volley"),
+	TENNIS( Place.INDOOR ,2, "tennis"),
+	BIKE( Place.OUTDOOR, 1, "bike"),
+	F1( Place.OUTDOOR, 1, "F1"),
+	MOTOGP( Place.OUTDOOR, 1, "motogp"),
+	SOCCER( Place.OUTDOOR, 12, "soccer");
+	
+	private final int NumPlayer;
+	private final String Nome;
+	private final Place Posto;
+	
+	Sport(final Place place, final int noTeamMembers, final String actualName){
+		this.NumPlayer=noTeamMembers;
+		this.Nome = actualName;
+		this.Posto = place;
+	}
+	
+	 public boolean isIndividualSport() {
+		return this.NumPlayer == 1;
+	}
+	 
+	public boolean isIndoorSport() {
+		return this.Posto == Place.INDOOR;
+	}
+	
+	public Place getPlace() {
+		return this.Posto;
+	}
+	
+	public String toString() {
+		return this.Nome;
+	}
     /*
      * TODO
      * 
      * [METHODS] To be defined
      * 
      * 
-     * 1) public boolean isIndividualSport()
+     * 1) 
      * 
      * Must return true only if called on individual sports
      * 
      * 
-     * 2) public boolean isIndoorSport()
+     * 2) 
      * 
      * Must return true in case the sport is practices indoor
      * 
      * 
-     * 3) public Place getPlace()
+     * 3) 
      * 
      * Must return the place where this sport is practiced
      * 
      * 
-     * 4) public String toString()
+     * 4) 
      * 
      * Returns the string representation of a sport
      */
