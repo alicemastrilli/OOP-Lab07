@@ -33,7 +33,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      * 
      * add a field to keep track of the set of sports followed/done by a user
      */
-	HashSet<Sport> SportSeguiti = new HashSet<>();
+	HashSet<Sport> set;
     /**
      * Builds a new {@link Sport2SocialNetworkUserImpl}.
      * 
@@ -47,6 +47,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      */
     public Sport2SocialNetworkUserImpl(final String name, final String surname, final String user) {
         this(name, surname, user, -1);
+        set = new HashSet<>();
     }
 
     /**
@@ -64,6 +65,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      */
     public Sport2SocialNetworkUserImpl(final String name, final String surname, final String user, final int userAge) {
         super(name, surname, user, userAge);
+        set= new HashSet<>();
     }
 
     /*
@@ -78,8 +80,8 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      *            a sport followed/done by the user
      */
     public void addSport(final Sport sport) {
-    	if(!SportSeguiti.contains(sport) ) {
-    		SportSeguiti.add(sport);
+    	if(!set.contains(sport)) {
+    		set.add(sport);
     	}
     }
 
@@ -92,33 +94,30 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      * @return true if user likes sport s
      */
     public boolean likesSport(final Sport s) {
-    	return SportSeguiti.contains(s);
+        return set.contains(s);
     }
 
     /*
      * [METHODS] NEW METHODS TO IMPLEMENT FROM SCRATCH
      */
-
-    public Set<Sport> getIndividualSports() {
-    	HashSet <Sport> SIndividuali = new HashSet<>();
-    	for(Sport s : this.SportSeguiti) {
-    		if(s.isIndividualSport()) {
-    			SIndividuali.add(s);
+    public Set<Sport> getIndividualSports() { 
+    	HashSet<Sport> individual = new HashSet<>();
+    	for(Sport s : set) {
+    		if (s.isIndividualSport()) {
+    			individual.add(s);
     		}
     	}
-    	return SIndividuali;    	
+    	return individual;
     }
     
     public Set<Sport> getSportPracticedInPlace(Place p) { 
-    	HashSet <Sport> SInPlace = new HashSet<>();
-    	for(Sport s : SportSeguiti) {
-    		if (s.getPlace() == p) {
-    			SInPlace.add(s);
+    	HashSet<Sport> list = new HashSet<>();
+    	for(Sport s : set) {
+    		if(s.getPlace() == p) {
+    			list.add(s);
     		}
     	}
-    	return SInPlace;
-    }
-}
+    	return list; }
     /**
      * Returns the set of individual sports followed/practiced by this user: a
      * sport is individual if the number of team member is = 1.
@@ -126,7 +125,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      * @return the set of individual sport this user practices/follows
      */
     /*
-     * 
+     * public Set<Sport> getIndividualSports() { return null; }
      * 
      * 
      * /** Returns the set of sports which are practiced in a given place.
@@ -139,4 +138,4 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
     /*
      * public Set<Sport> getSportPracticedInPlace(Place p) { return null; }
      */
-
+}

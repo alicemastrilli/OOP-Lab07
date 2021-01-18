@@ -16,62 +16,98 @@ package it.unibo.oop.lab.enum2;
  * 
  */
 public enum Sport {
+	BASKET(Place.INDOOR, 3, "basket"),
+	VOLLEY(Place.INDOOR, 6, "volley"), 
+	TENNIS(Place.INDOOR, 1, "tennis"), 
+	BIKE(Place.OUTDOOR, 1, "bike"), 
+	F1(Place.OUTDOOR, 1, "F1"), 
+	MOTOGP(Place.OUTDOOR, 1, "motoGP"),
+	SOCCER(Place.OUTDOOR, 12, "doccer");
 
-	BASKET( Place.INDOOR,5, "basket" ),
-	VOLLEY( Place.INDOOR, 6, "volley"),
-	TENNIS( Place.INDOOR ,2, "tennis"),
-	BIKE( Place.OUTDOOR, 1, "bike"),
-	F1( Place.OUTDOOR, 1, "F1"),
-	MOTOGP( Place.OUTDOOR, 1, "motogp"),
-	SOCCER( Place.OUTDOOR, 12, "soccer");
-	
-	private final int NumPlayer;
-	private final String Nome;
-	private final Place Posto;
-	
-	Sport(final Place place, final int noTeamMembers, final String actualName){
-		this.NumPlayer=noTeamMembers;
-		this.Nome = actualName;
-		this.Posto = place;
+    /*
+     * TODO
+     * 
+     * Declare the following sports:
+     * 
+     * - basket
+     * 
+     * - volley
+     * 
+     * - tennis
+     * 
+     * - bike
+     * 
+     * - F1
+     * 
+     * - motogp
+     * 
+     * - soccer
+     * 
+     */
+
+	private Place place;
+	private int noTeamMembers;
+	private String actualName;
+	private Sport(Place place, int noTeamMembers, String actualName) {
+		this.place = place;
+		this.noTeamMembers = noTeamMembers;
+		this.actualName = actualName;
 	}
 	
-	 public boolean isIndividualSport() {
-		return this.NumPlayer == 1;
+	public boolean isIndividualSport() {
+		return this.noTeamMembers == 1;
 	}
-	 
 	public boolean isIndoorSport() {
-		return this.Posto == Place.INDOOR;
+		return this.place == Place.INDOOR;
 	}
 	
-	public Place getPlace() {
-		return this.Posto;
-	}
-	
-	public String toString() {
-		return this.Nome;
-	}
+     public Place getPlace() {
+    	 return this.place;
+     }
+     
+     public String toString() {
+    	 return "Lo sport è :" +this.actualName + "si gioca in " +this.noTeamMembers;
+     }
+    /*
+     * TODO
+     * 
+     * [FIELDS]
+     * 
+     * Declare required fields
+     */
+
+    /*
+     * TODO
+     * 
+     * [CONSTRUCTOR]
+     * 
+     * Define a constructor like this:
+     * 
+     * - Sport(final Place place, final int noTeamMembers, final String actualName)
+     */
+
     /*
      * TODO
      * 
      * [METHODS] To be defined
      * 
      * 
-     * 1) 
+     * 1) public boolean isIndividualSport()
      * 
      * Must return true only if called on individual sports
      * 
      * 
-     * 2) 
+     * 2) public boolean isIndoorSport()
      * 
      * Must return true in case the sport is practices indoor
      * 
      * 
-     * 3) 
+     * 3) public Place getPlace()
      * 
      * Must return the place where this sport is practiced
      * 
      * 
-     * 4) 
+     * 4) public String toString()
      * 
      * Returns the string representation of a sport
      */
